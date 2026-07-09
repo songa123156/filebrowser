@@ -61,7 +61,7 @@ export function generateRandomCode(length) {
   return code;
 }
 
-export async function logout() {
+export async function logout(fallbackUrl = "") {
   try {
     const res = await fetch(getApiPath("auth/logout"), {
       method: "POST",
@@ -75,7 +75,7 @@ export async function logout() {
       void mutations.setCurrentUser(null);
       // No need to clear state.jwt - cookie is the source of truth
       if (!logoutUrl) {
-        logoutUrl = `${globalVars.baseURL}login`;
+        logoutUrl = fallbackUrl || `${globalVars.baseURL}login`;
       }
       // Add a small delay to ensure cookie deletion completes before redirect
       setTimeout(() => {
