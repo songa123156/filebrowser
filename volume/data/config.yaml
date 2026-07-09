@@ -11,8 +11,8 @@ auth:
       enabled: true
       clientId: filebrowser
       clientSecret: filebrowser-secret
-      issuerUrl: http://192.168.1.13:8000/openid
-      logoutRedirectUrl: http://192.168.1.13:8000/openid/force-logout/?next=http%3A%2F%2F192.168.1.13%3A8080%2Flogin
+      issuerUrl: http://192.168.1.13:20000/openid
+      logoutRedirectUrl: http://192.168.1.13:20000/openid/force-logout/?next=http%3A%2F%2F192.168.1.13%3A8080%2Flogin
       scopes: openid email profile
       userIdentifier: preferred_username
     password:
