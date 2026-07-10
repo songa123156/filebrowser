@@ -9,12 +9,23 @@ auth:
   methods:
     oidc:
       enabled: true
-      clientId: filebrowser
-      clientSecret: filebrowser-secret
-      issuerUrl: http://192.168.1.13:20000/openid
-      logoutRedirectUrl: http://192.168.1.13:20000/openid/force-logout/?next=http%3A%2F%2F192.168.1.13%3A8080%2Flogin
-      scopes: openid email profile
-      userIdentifier: preferred_username
+      adminGroup: "GLV manager"
+      userGroups:
+        - "Ban Truyền Thông"
+        - "Ban Kĩ Thuật"
+        - "Ban Điều Hành"
+        - "Ban Đọc Sách"
+        - "Ban Sinh Hoạt"
+        - "GLV manager"
+      groupsClaim: "groups"
+      userIdentifier: "sub"
+      disableVerifyTLS: false
+      logoutRedirectUrl: "http://172.17.0.1:20000/o/force-logout/?next=http%3A%2F%2F127.0.0.1%3A8080%2Flogin"
+      createUser: true
+      clientId: "filebrowser-quantum-btt"
+      clientSecret: "74877bea8a5e6d504cb4a5bceb68c1fb10798b8bab82a7356b2eb10d2cf25f05"
+      issuerUrl: "http://172.17.0.1:20000/o"
+      scopes: "openid profile groups"
     password:
       enabled: true
       minLength: 5
