@@ -18,7 +18,7 @@ auth:
         - "Ban Sinh Hoạt"
         - "GLV manager"
       groupsClaim: "groups"
-      userIdentifier: "sub"
+      userIdentifier: "preferred_username"
       disableVerifyTLS: false
       logoutRedirectUrl: "http://172.17.0.1:20000/o/force-logout/?next=http%3A%2F%2F127.0.0.1%3A8080%2Flogin"
       createUser: true
