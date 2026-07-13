@@ -34,14 +34,15 @@ func (t *userAgentTransport) RoundTrip(req *http.Request) (*http.Response, error
 
 // AuthCommon contains fields shared across multiple authentication methods
 type AuthCommon struct {
-	Enabled           bool     `json:"enabled"`           // whether to enable this authentication method.
-	AdminGroup        string   `json:"adminGroup"`        // if set, users in this group will be granted admin privileges
-	UserGroups        []string `json:"userGroups"`        // if set, only users in these groups are allowed to log in. Blocks all other users even with valid credentials.
-	GroupsClaim       string   `json:"groupsClaim"`       // the JSON field name to read groups from. Default is "groups"
-	UserIdentifier    string   `json:"userIdentifier"`    // the field value to use as the username. Default is "preferred_username" in oidc, "sub" in jwt. Other common values are "email" or "username", or "phone"
-	DisableVerifyTLS  bool     `json:"disableVerifyTLS"`  // disable TLS verification (insecure, for testing only)
-	LogoutRedirectUrl string   `json:"logoutRedirectUrl"` // if provider logout url is provided, filebrowser will also redirect to logout url. Custom logout query params are respected.
-	CreateUser        bool     `json:"createUser"`        // deprecated: always true for supported authentication methods
+	Enabled                 bool     `json:"enabled"`                 // whether to enable this authentication method.
+	AdminGroup              string   `json:"adminGroup"`              // if set, users in this group will be granted admin privileges
+	UserGroups              []string `json:"userGroups"`              // if set, only users in these groups are allowed to log in. Blocks all other users even with valid credentials.
+	GroupsClaim             string   `json:"groupsClaim"`             // the JSON field name to read groups from. Default is "groups"
+	UserIdentifier          string   `json:"userIdentifier"`          // the field value to use as the username. Default is "preferred_username" in oidc, "sub" in jwt. Other common values are "email" or "username", or "phone"
+	DisableVerifyTLS        bool     `json:"disableVerifyTLS"`        // disable TLS verification (insecure, for testing only)
+	LogoutRedirectUrl       string   `json:"logoutRedirectUrl"`       // if provider logout url is provided, filebrowser will also redirect to logout url. Custom logout query params are respected.
+	UnauthorizedRedirectUrl string   `json:"unauthorizedRedirectUrl"` // redirect URL used when an external-auth user is authenticated but not allowed by userGroups.
+	CreateUser              bool     `json:"createUser"`              // deprecated: always true for supported authentication methods
 }
 
 type Auth struct {

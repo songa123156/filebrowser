@@ -335,7 +335,12 @@ func loginWithOidcUser(w http.ResponseWriter, r *http.Request, username string, 
 		}
 		if !userInAllowedGroup {
 			logger.Warningf("User %s is not in any of the required groups %v. Access denied.", username, oidcCfg.UserGroups)
-			return http.StatusForbidden, fmt.Errorf("user %s is not authorized to access this application (not in required groups)", username)
+			redirectURL := oidcCfg.UnauthorizedRedirectUrl
+			if redirectURL == "" {
+				redirectURL = "http://172.17.0.1:20000/admin/"
+			}
+			http.Redirect(w, r, redirectURL, http.StatusFound)
+			return 0, nil
 		}
 		logger.Debugf("User %s is in required group, allowing access.", username)
 	}

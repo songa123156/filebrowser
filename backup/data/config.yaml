@@ -16,11 +16,11 @@ auth:
         - "Ban Điều Hành"
         - "Ban Đọc Sách"
         - "Ban Sinh Hoạt"
+        - "GLV manager"
       groupsClaim: "groups"
       userIdentifier: "preferred_username"
       disableVerifyTLS: false
       logoutRedirectUrl: "http://172.17.0.1:20000/o/force-logout/?next=http%3A%2F%2F127.0.0.1%3A8080%2Flogin"
-      unauthorizedRedirectUrl: "http://172.17.0.1:20000/admin/"
       createUser: true
       clientId: "filebrowser-quantum-btt"
       clientSecret: "74877bea8a5e6d504cb4a5bceb68c1fb10798b8bab82a7356b2eb10d2cf25f05"
